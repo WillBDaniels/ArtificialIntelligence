@@ -1,0 +1,77 @@
+ \documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{pdfpages}
+
+
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\setlength{\evensidemargin}{1in}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\oddsidemargin}{1.5in}
+\addtolength{\oddsidemargin}{-1.5in}
+\setlength{\topmargin}{1in}
+\addtolength{\topmargin}{-1.5in}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+
+\newcommand{\rook}{\hspace{-.1cm}\amalg\hspace{-.15cm}\bar{}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\FF}{\mathbb{F}}
+
+
+\begin{document}
+\begin{center}
+\section*{William Daniels}
+\section*{CSCI 4630}
+\subsection*{HW \#1}
+\subsection*{February 1st}
+\end{center}
+\vspace{.25cm}
+\begin{enumerate}
+\item \textbf{The Missionaries and Cannibals problem}\\\\
+Three Missionaries and three cannibals find themselves on one side of a river. They have agreed that they would all like to get to the other side. But the missionaries are not sure waht else the cannibals have agreed to. So the missionaries want to manage the trip across the river in such a way that the number of missionaries on either side of the river is never less than the number of cannibals who are on the same. The only boat available holds on two people at a time. hw can everyone get across the river without the missionaries rising begin eaten. \\\\
+\item \textbf{The Tower of Hanoi}\\\\
+\textbf{Solution:}\\\\
+First, we establish our state space: \\
+state space $(w, x, y, z, a, b)$:
+\begin{align*}
+&w - \text{The number of cannibals on the starting side of the river}\\
+&x - \text{The number of missionaries on the starting side of the river} \\
+&y - \text{The number of cannibals on the finishing side} \\
+&z - \text{The number of missionaries on the finishing side}\\
+\end{align*}
+Production Rules: 
+\begin{enumerate}
+\item  move $(u, v):\\
+ (w, (w \leq x)  \vee x = 0, y, (y \leq z)  \vee z = 0) \rightarrow\\
+ (w - u, (w - u \leq x - v)  \vee x = 0, y + u, (y + u \leq z + v)  \vee z + v = 0)$
+\end{enumerate}
+Somewhere near Hanoi there is a monastery whose monks devote their lives to
+a very important task. In their courtyard are three tall posts. On these posts is a
+set of sixty-four disks, each with a hole in the center and each of a different
+radius. When the monastery was established, all of the disks were on one of the
+posts, each disk resting on one just larger than it. The monks' task is to move
+all the disks to one of the other pegs. Only one disk may be moved at a time,
+and all the other disks must be on one of the pegs. In addition, at no time
+during the process may a disk be placed on top of a smaller disk. The third peg
+can, of course, be used as a temporary resting place for disks. What is the
+quickest way for monks to accomplish their mission?
+ Even the best solution to this problem will take the monks a very long time.
+This is fortunate, since legend has it that the world will end when they have
+finished.\\\\
+
+\end{enumerate}
+
+
+
+\end{document}
+
