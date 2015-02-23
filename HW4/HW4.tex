@@ -1,0 +1,71 @@
+ \documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\setlength{\evensidemargin}{1in}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\oddsidemargin}{1.5in}
+\addtolength{\oddsidemargin}{-1.5in}
+\setlength{\topmargin}{1in}
+\addtolength{\topmargin}{-1.5in}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+
+\newcommand{\rook}{\hspace{-.1cm}\amalg\hspace{-.15cm}\bar{}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\FF}{\mathbb{F}}
+
+
+\begin{document}
+\begin{center}
+\section*{William Daniels}
+\section*{CSCI 4202}
+\subsection*{Artificial Intelligence}
+\subsection*{Homework \#4 02/18/15}
+\end{center}
+
+\vspace{.25cm}
+\begin{enumerate}
+\item The following axioms fully express the language asked for in the problem: 
+\begin{enumerate}
+\item $\forall x: food(x) \rightarrow like(x, John)$
+\item $food(Apples)$
+\item $food(Chicken)$
+\item $\forall x \forall y : eats(x, y) \land \neg killedBy(x, y) \rightarrow food(x)$
+\item $eats(Peanuts, Bill) \rightarrow \neg killedBy(peanuts, Bill)$
+\item $\forall x: eats(x, Bill) \rightarrow eats(x, Sue)$
+\end{enumerate}
+\item 
+\begin{align*}
+& like(peanuts, John)\\
+& a \rightarrow food(peanuts)\\
+& d \rightarrow eats(peanuts, y) \land \neg killedBy(peanuts, y)\\
+& e \rightarrow eats(peanuts, Bill)\\
+& nil\\
+\end{align*}
+\item Translation into clause form: \\
+\begin{enumerate}
+\item $ \neg food(x) \vee like(x, John)$
+\item $food(Apples)$
+\item $food(Chicken)$
+\item $ eats(y, z) \land  killedBy(y, z) \vee food(y)$
+\item $\neg eats(Peanuts, Bill) \vee \neg killedBy(peanuts, Bill)$
+\item $ \neg eats(t, Bill) \vee eats(t, Sue)$
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
+
