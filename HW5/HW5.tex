@@ -1,0 +1,109 @@
+ \documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\setlength{\evensidemargin}{1in}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\oddsidemargin}{1.5in}
+\addtolength{\oddsidemargin}{-1.5in}
+\setlength{\topmargin}{1in}
+\addtolength{\topmargin}{-1.5in}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+
+\newcommand{\rook}{\hspace{-.1cm}\amalg\hspace{-.15cm}\bar{}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\FF}{\mathbb{F}}
+
+
+\begin{document}
+\begin{center}
+\section*{William Daniels}
+\section*{CSCI 4202}
+\subsection*{Artificial Intelligence}
+\subsection*{Homework \#5 02/25/2015}
+\end{center}
+
+\vspace{.25cm}
+\begin{enumerate}
+\item First, we'll re-list the axioms from assignment 4 in clause form: \\\\
+\begin{enumerate}[(a)]
+\item $\neg food(x_1) \vee like(x_1, John)$
+\item $food(Apples)$
+\item $food(Chicken)$
+\item $\neg eats(x_4, y_4) \vee killedBy(x_4, y_4) \vee food(x_4)$
+\item $\neg eats(Peanuts, Bill) \vee \neg killedBy(peanuts, Bill)$
+\item $\neg eats(x_6, Bill) \vee eats(x_6, Sue)$
+\end{enumerate}
+alright, excellent, now we're going to prove that John likes peanuts. So, first we negate our statement and put it into clause form (in that order!): $\neg like(Peanuts, John)$\\
+Sweet, now using a subsitution we apply the resolution procedure as follows: 
+$$\neg like(Peanuts, John)$$
+\begin{align*}
+&1 \rightarrow \text{ Replacement: } \left ( \frac{Peanuts}{x_1} \right ) \neg food(Peanuts)\\
+&4 \rightarrow \text{ Replacement: } \left ( \frac{Peanuts}{x_4}, \frac{Bill}{y_4} \right )  \neg eats(Peanuts, Bill) \vee killedBy(Peanuts, Bill)\\
+&5 \rightarrow   \neg eats(Peanuts, Bill) \vee \neg eats(Peanuts, Bill)\\
+\end{align*}
+this is true and true, therefore, our clause is false, John does not like peanuts. 
+\item First, we represent the facts in predicate logic: 
+\begin{enumerate}[(1)]
+\item $ClubMember(Joe)$
+\item $ClubMember(Sally)$
+\item $ClubMember(Ellen)$
+\item $ClubMember(Bill)$
+\item $Married(Joe, Sally)$
+\item $Siblings(Bill, Ellen)$
+\item $\forall x, \forall y: ClubMember(x) \wedge married(x, y) \rightarrow ClubMember(y)$
+\item $LastMeetingAtHouseOf(Joe)$ 
+\end{enumerate}
+ Now, for part (b) we need to turn this into clause form, which is thankfully very simple: \\
+\begin{enumerate}[(1)]
+\item $ClubMember(Joe)$
+\item $ClubMember(Sally)$
+\item $ClubMember(Ellen)$
+\item $ClubMember(Bill)$
+\item $Married(Joe, Sally)$
+\item $Siblings(Bill, Ellen)$
+\item $\neg  ClubMember(x_7) \vee \neg married(x_7, y_7) \vee ClubMember(y_7)$
+\item $LastMeetingAtHouseOf(Joe)$ 
+\end{enumerate}
+easy enough, Now. we need to try and decide the truth of the requested information, first: 
+$LastMeetingAtHouseOf(Sally)$
+Now, we negate it, and begin our resolution procedure: 
+$$ \neg LastMeetingAtHouseOf(Sally)$$
+\begin{align*}
+&8 \rightarrow \text{ Replacement: } \left ( \frac{Joe}{Sally} \right ) Nothing else to do, we are finished. \qed\\
+\end{align*}
+now for, Ellen not being married. This one we cannot do, since the clause: $\neg married(Ellen, y)$ there is no associated item which which to pair it, therefore we must add some facts to the database. 
+we add: 
+\begin{enumerate}[(9)]
+\item $\forall x \forall y : siblings(x, y) \rightarrow \neg married(x, y)$
+\end{enumerate}
+then into clause form: $\neg siblings(x_9, y_9) \vee married(x_9, y_9)$
+From there it becomes simple, the derivation looks like the following: 
+\begin{align*}
+&\neg married(Ellen, x)\\
+& 9 \rightarrow \text{ Replacement: } \left ( \frac{x}{y_9} \right ) Siblings(Ellen, x)\\
+&6 \rightarrow \text{ Replacement: } \left ( \frac{Bill}{y_9} \right )\\
+& \text{ Nothing else to do, we are finished. Ellen and Bill would not be siblings in this case, contradiction. } \qed\\
+\end{align*}
+
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}
+
