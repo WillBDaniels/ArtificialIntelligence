@@ -1,0 +1,81 @@
+ \documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\setlength{\evensidemargin}{1in}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\oddsidemargin}{1.5in}
+\addtolength{\oddsidemargin}{-1.5in}
+\setlength{\topmargin}{1in}
+\addtolength{\topmargin}{-1.5in}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+
+\newcommand{\rook}{\hspace{-.1cm}\amalg\hspace{-.15cm}\bar{}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\FF}{\mathbb{F}}
+
+
+\begin{document}
+\begin{center}
+\section*{William Daniels}
+\section*{CSCI 4202}
+\subsection*{Artificial Intelligence}
+\subsection*{Homework \#6 03/08/15}
+\end{center}
+
+\vspace{.25cm}
+
+First, we will convert all of the axioms into clause form: 
+\begin{enumerate}[(1)]
+\item \textbf{move(x, s)} \\
+$$AT(monkey, b, s_1) \vee ONCHAIR(s_1) \vee AT(monkey, x_1, move(x_1, s_1))$$
+\item \textbf{carry(x,s)}\\
+$$\neg AT(monkey, b, s_2) \vee ONCHAIR(s_2) \vee AT(char, x_2, carry(x_2, s_2))$$
+\item \textbf{climb(s)}\\
+\begin{enumerate}[(3.1)]
+\item $\neg AT(char, x_{3.1}, s_{3.1}) \vee AT(char, x_{3.1}, climb(s_{3.1}))$
+\item $ ONCHAIR(climb(s_{3.2}))$
+\item $\neg ONCHAIR(s_{3.3}))$
+\end{enumerate}
+\item \textbf{knock(s)}\\
+$$ \neg ONCHAIR(s_4) \vee AT(chair, c, s_4) \vee HB(knock(s_4))$$
+\item $\neg AT(monkey, a, s_5) \vee \neg AT(monkey, b, s_5), b \not = a$
+\end{enumerate}
+Now, our state space starts as: 
+$$\neg ONCHAIR(s_0), \neg HB(s_0), AT(monkey, a, s_0), AT(chair, b, s_0), AT(banana, c, s_0)$$
+which can be interpreted as various axioms of: 
+\begin{enumerate}[(6.1)]
+\item $ONCHAIR(s_1)$
+\item $\neg HB(s_0)$
+\item $AT(monkey, a, s_0)$
+\item $AT(chair, b, s_0)$
+\item $AT(banana, c, s_0)$
+\end{enumerate}
+We are trying to prove that $\exists s HB(s)$\\\\
+Proof that a monkey can have a banana:  (you'll notice our first step is to negate our assumption)
+Since i'm using tex, making the nice 'tree' like diagram in the notes is difficult, so instead I'll be using the format: leftHandSide Axiom $\rightarrow$ negated with right hand side axiom, Substitutions will be in parenthesis. \\
+\begin{enumerate}[(a)]
+\item $\neg HB(s_6) \rightarrow 4 \left(\frac{knock(s_4)}{s_6}\right )$
+\item $\neg ONCHAIR(s_4) \vee AT(chair, c, s_4) \rightarrow 3.2 \left(\frac{climb(s_{3.2})}{s_4}\right)$
+\item $\neg AT(chair, c, climb(s_{3.2})) \rightarrow 3.1 \left(\frac{c}{x_{3.1}}\right), \left(\frac{s_{3.2}}{s_{3.1}}\right)$
+\item $\neg AT(char, x_{3.1}, s_{3.1}) \rightarrow 1 \left(\frac{b}{x_{3.1}}\right), \left(\frac{s_1}{s_{3.1}}\right)$
+\item $  ONCHAIR(s_1) \vee AT(monkey, x_1, move(x_1, s_1)) \rightarrow 3.3 \left(\frac{s_1}{s_{3.3}}\right)$
+\item $ AT(monkey, x_1, move(x_1, s_{3.3})) \rightarrow 5 \left(\frac{x_1}{b}\right), \left(\frac{move(x_1,s_{3.3})}{s_5}\right)$
+\item $ \neg AT(monkey, a, s_5) \rightarrow 6.3 \left(\frac{s_5}{s_0}\right) $
+\item $\qed$
+\end{enumerate}
+
+
+\end{document}
+
