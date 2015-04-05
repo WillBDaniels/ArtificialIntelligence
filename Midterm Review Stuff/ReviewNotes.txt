@@ -1,0 +1,22 @@
+* Write about a number of sensors, and write about the flow of the whole system, sensors, brains, actuators, etc. 
+	A question about sensors could be like: "in your project, you're using such and such sensors, what is the purpose of it, what are some of the sources of innacuracy, etc."
+* Write about Noise, and Signal conditioning, and how to handle the various amounts of error, as well as how to filter out bad data. 
+	how to filter camera noise, or how to handle that. 
+* Processors: 
+	Taxonomy for the processors, single core, multi-core, 
+	Instruction sets, 
+	scheduling, etc. 
+*Multithreading: 
+	Two different types of multithreading. 
+Voltage is always a battle of power vs. performance.
+
+cache: 
+	Look at Cache impact on system performance slide for equations of below graph: 
+	might ask us to draw a graph, asking for the cache performance vs. size
+He will not ask about the super advanced kind of memory (RAMBUS, etc)
+
+Scheduling things to consider: 
+	*Can the task be preempted
+	*Can a new task start?
+	*Is the task periodic
+	* Does the task have precedence (priority, etc.)

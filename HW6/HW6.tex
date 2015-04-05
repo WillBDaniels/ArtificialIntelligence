@@ -41,10 +41,10 @@ First, we will convert all of the axioms into clause form:
 \item \textbf{move(x, s)} \\
 $$AT(monkey, b, s_1) \vee ONCHAIR(s_1) \vee AT(monkey, x_1, move(x_1, s_1))$$
 \item \textbf{carry(x,s)}\\
-$$\neg AT(monkey, b, s_2) \vee ONCHAIR(s_2) \vee AT(char, x_2, carry(x_2, s_2))$$
+$$\neg AT(monkey, b, s_2) \vee ONCHAIR(s_2) \vee AT(chair, x_2, carry(x_2, s_2))$$
 \item \textbf{climb(s)}\\
 \begin{enumerate}[(3.1)]
-\item $\neg AT(char, x_{3.1}, s_{3.1}) \vee AT(char, x_{3.1}, climb(s_{3.1}))$
+\item $\neg AT(chair, x_{3.1}, s_{3.1}) \vee AT(chair, x_{3.1}, climb(s_{3.1}))$
 \item $ ONCHAIR(climb(s_{3.2}))$
 \item $\neg ONCHAIR(s_{3.3}))$
 \end{enumerate}
@@ -69,7 +69,7 @@ Since i'm using tex, making the nice 'tree' like diagram in the notes is difficu
 \item $\neg HB(s_6) \rightarrow 4 \left(\frac{knock(s_4)}{s_6}\right )$
 \item $\neg ONCHAIR(s_4) \vee AT(chair, c, s_4) \rightarrow 3.2 \left(\frac{climb(s_{3.2})}{s_4}\right)$
 \item $\neg AT(chair, c, climb(s_{3.2})) \rightarrow 3.1 \left(\frac{c}{x_{3.1}}\right), \left(\frac{s_{3.2}}{s_{3.1}}\right)$
-\item $\neg AT(char, x_{3.1}, s_{3.1}) \rightarrow 1 \left(\frac{b}{x_{3.1}}\right), \left(\frac{s_1}{s_{3.1}}\right)$
+\item $\neg AT(chair, x_{3.1}, s_{3.1}) \rightarrow 1 \left(\frac{b}{x_{3.1}}\right), \left(\frac{s_1}{s_{3.1}}\right)$
 \item $  ONCHAIR(s_1) \vee AT(monkey, x_1, move(x_1, s_1)) \rightarrow 3.3 \left(\frac{s_1}{s_{3.3}}\right)$
 \item $ AT(monkey, x_1, move(x_1, s_{3.3})) \rightarrow 5 \left(\frac{x_1}{b}\right), \left(\frac{move(x_1,s_{3.3})}{s_5}\right)$
 \item $ \neg AT(monkey, a, s_5) \rightarrow 6.3 \left(\frac{s_5}{s_0}\right) $
