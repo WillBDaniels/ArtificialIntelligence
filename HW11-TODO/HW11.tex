@@ -1,0 +1,64 @@
+ \documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\setlength{\evensidemargin}{1in}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\oddsidemargin}{1.5in}
+\addtolength{\oddsidemargin}{-1.5in}
+\setlength{\topmargin}{1in}
+\addtolength{\topmargin}{-1.5in}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+
+\newcommand{\rook}{\hspace{-.1cm}\amalg\hspace{-.15cm}\bar{}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\FF}{\mathbb{F}}
+
+
+\begin{document}
+\begin{center}
+\section*{William Daniels}
+\section*{CSCI 4202}
+\subsection*{Artificial Intelligence}
+\subsection*{Homework \#11 05/08/15}
+\end{center}
+
+\vspace{.25cm}
+
+
+\begin{enumerate}[(a)]
+\item Show the generation of the shortest trajectories for the king from a4 to h4 on the standard chess board. Show at least four steps of the generation of one of the trajectories in details (show all sets and functions). \\\\
+$S(x,y,l) = S(a4, h4, 8)$
+\begin{align*}
+&\overset{\mathcal{Q}_1}{\rightarrow} A(a4, h4, 8)\\
+&\overset{\mathcal{Q}_2}{\rightarrow} a(a4)A(\textbf{next}_1 (a4, 8), h4, 7)\\
+&\rightarrow a(a4)A(b4, h4, 7)\\
+&\overset{\mathcal{Q}_2}{\rightarrow} a(a4)a(b4)A(\textbf{next}_1 (a4, 7), h4, 6)\\
+&\rightarrow a(a4)a(b4)A(c4, h4, 6)\\
+&\overset{\mathcal{Q}_2}{\rightarrow} a(a4)a(b4)a(c4)A(\textbf{next}_1 (a4, 6), h4, 5)\\
+&\rightarrow a(a4)a(b4)a(c4)A(d4, h4, 6)\\
+&\overset{\mathcal{Q}_2}{\rightarrow}a(a4)a(b4)a(c4)a(d4)A(\textbf{next}_1 (a4, 5), h4, 5)\\
+\end{align*}
+\item How many shortest trajectories from a4 to h4? \\\\
+There are 56 trajectories (8 choose 3). This is because the king moving diagonally is equal to the king moving just horizontally. The king can also alternate diagonal and horizontal, creating the 'choose' effect. 
+\item Does the grammar $G_t^(1)$ generate all of them? Explain. \\\\
+Yes it does. By simply choosing a different random value of $i$ each time, you will be able to eventually generate all shortest trajectories from any point to another, external circumstances (new obstacle, etc. etc.) notwithstanding. 
+\item Generate (in details) all the shortest trajectories for the Queen for the following cases. Reachability relations for the Queen were shown in the ass-t 1. (d1) from d2 to b7 (d2) from e2 to h5
+\end{enumerate}
+
+
+
+
+\end{document}
+
