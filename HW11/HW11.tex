@@ -36,7 +36,8 @@
 
 \vspace{.25cm}
 
-
+\begin{enumerate}
+\item 
 \begin{enumerate}[(a)]
 \item Show the generation of the shortest trajectories for the king from a4 to h4 on the standard chess board. Show at least four steps of the generation of one of the trajectories in details (show all sets and functions). \\\\
 $S(x,y,l) = S(a4, h4, 8)$
@@ -51,10 +52,15 @@ $S(x,y,l) = S(a4, h4, 8)$
 &\overset{\mathcal{Q}_2}{\rightarrow}a(a4)a(b4)a(c4)a(d4)A(\textbf{next}_1 (a4, 5), h4, 5)\\
 \end{align*}
 \item How many shortest trajectories from a4 to h4? \\\\
-There are 56 trajectories (8 choose 3). This is because the king moving diagonally is equal to the king moving just horizontally. The king can also alternate diagonal and horizontal, creating the 'choose' effect. 
+There are 1104 trajectories. Honestly, I just used my extra credit program and had the program count them. I know there's a combinatorics answer to this, but it's a wicked tricky argument 
 \item Does the grammar $G_t^(1)$ generate all of them? Explain. \\\\
-Yes it does. By simply choosing a different random value of $i$ each time, you will be able to eventually generate all shortest trajectories from any point to another, external circumstances (new obstacle, etc. etc.) notwithstanding. 
-\item Generate (in details) all the shortest trajectories for the Queen for the following cases. Reachability relations for the Queen were shown in the ass-t 1. (d1) from d2 to b7 (d2) from e2 to h5
+Yes it does. By simply choosing a different random value of $i$ each time, you will be able to eventually generate all shortest trajectories from any point to another, external circumstances (new obstacle, etc. etc.) notwithstanding. However, the grammar only generates ONE at any given time, in order to generate them all, you'd have to keep re-running the algorithm. (In a perfectly theoretical sense, you'd use a really good random number picker for each 'i' iteration of next, and at some time step t, you'd generate all of the trajectories with probability 1). 
+\item Generate (in details) all the shortest trajectories for the Queen for the following cases. (d1) from d2 to b7 (d2) from e2 to h5
+\end{enumerate}
+\item
+\item well, technically speaking, the following grammar generates the acrocentric chromosome EXACTLY: 
+$<Acrocentric Chromosome>$ $\rightarrow$ cadbbbbbbabbbbbcbbbbbabbbbbbdac
+Although that may seem like cheating, it's completely valid grammatical structure, because this grammar is context-sensitive, it's a regular expression, and any regular expression can be considered to be the concatenation of it's individual singletons, therefore, this grammar produces the required language exactly and uniquely. $\qed$
 \end{enumerate}
 
 
